@@ -5430,3 +5430,19 @@ select {
   min-width: 0;
   padding: 8px 44px;
 }
+
+/* Touch layouts hide the institutional heading; keep the APREM version visible. */
+.mobile-version {
+  display: none;
+  align-items: center;
+  min-height: 32px;
+  padding: 6px 9px;
+  border-radius: 10px;
+  background: var(--panel-strong);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+@media (max-width: 1180px) { .mobile-version { display: inline-flex; } }
+.app-shell--phone .mobile-version { display: inline-flex; }
