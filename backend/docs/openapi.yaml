@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: EGEM Backend API
+  title: APREM Backend API
   version: 1.0.0
-  description: API institucional para gestión de usuarios y capas del visor EGEM.
+  description: API institucional para gestión de usuarios y capas del visor APREM.
 servers:
   - url: http://localhost:4000/api/v1
 paths:

@@ -120,7 +120,7 @@ import { installMapExport } from "./app/utils/map-export.js";
     {
       id: "demo-admin",
       name: "Administrador del Atlas",
-      email: "admin@egem.morelos",
+      email: "admin@aprem.morelos",
       password: "Admin123!",
       role: "admin",
       backendRole: "ADMIN",
@@ -131,7 +131,7 @@ import { installMapExport } from "./app/utils/map-export.js";
     {
       id: "demo-director-cuernavaca",
       name: "Director Cuernavaca",
-      email: "director.cuernavaca@egem.morelos",
+      email: "director.cuernavaca@aprem.morelos",
       password: "Director123!",
       role: "director",
       backendRole: "DATA_PROVIDER",
@@ -142,7 +142,7 @@ import { installMapExport } from "./app/utils/map-export.js";
     {
       id: "demo-visitante",
       name: "Visitante del Atlas",
-      email: "visitante@egem.morelos",
+      email: "visitante@aprem.morelos",
       password: "Visitante123!",
       role: "visitante",
       backendRole: "PUBLIC_USER",

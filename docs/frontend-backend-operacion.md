@@ -1,8 +1,8 @@
-# Operacion conjunta EGEM
+# Operacion conjunta APREM
 
 ## Objetivo
 
-Este documento resume como correr el frontend institucional EGEM junto con el backend real para autenticacion, gestion de usuarios y consumo de capas.
+Este documento resume como correr el frontend institucional APREM junto con el backend real para autenticacion, gestion de usuarios y consumo de capas.
 
 ## 1. Levantar backend
 
@@ -68,7 +68,7 @@ Para salida masiva institucional, este frontend ya esta mejor preparado, pero la
 
 ## 6. Nota de despliegue
 
-Si el frontend se publica fuera de `localhost`, actualiza el bloque `window.__EGEM_CONFIG__` en:
+Si el frontend se publica fuera de `localhost`, actualiza el bloque `window.__APREM_CONFIG__` en:
 
 `C:\Users\franc\Desktop\DOCUMENTACIÓN ATLAS MORELOS\AtlasMorelosVisor\index.html`
 
@@ -76,7 +76,7 @@ Define ahi la URL real del backend institucional, por ejemplo:
 
 ```html
 <script>
-  window.__EGEM_CONFIG__ = {
+  window.__APREM_CONFIG__ = {
     apiBaseUrl: "https://api.tu-dominio.gob.mx/api/v1"
   };
 </script>

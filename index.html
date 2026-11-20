@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Atlas del Estado de Morelos</title>
+  <title>Atlas de Peligros y Riesgos del Estado de Morelos</title>
   <meta
     name="description"
-    content="Atlas del Estado de Morelos para consulta territorial institucional."
+    content="Atlas de Peligros y Riesgos del Estado de Morelos para consulta territorial institucional."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,7 +21,7 @@
   />
 
   <link rel="icon" href="data:," />
-  <link rel="stylesheet" href="css/style.css?v=ui1024-release" />
+  <link rel="stylesheet" href="css/style.css?v=aprem22" />
 </head>
 <body>
   <div class="app-shell" tabindex="-1">
@@ -37,15 +37,15 @@
           <img
             class="topbar-brand__image"
             src="assets/Convivencia_page-0003.png"
-            alt="Encabezado institucional del Atlas del Estado de Morelos"
+            alt="Encabezado institucional del Atlas de Peligros y Riesgos del Estado de Morelos"
           />
         </button>
         <div class="brand-block">
           <p class="eyebrow">Atlas de riesgos para consulta operativa</p>
-          <p class="brand-short">Atlas Morelos</p>
+          <p class="brand-short">APREM</p>
           <div class="brand-title-row">
-            <h1>Atlas del Estado de Morelos</h1>
-            <span class="trial-version-badge" aria-label="Versión: VGEM 2.1">Versión: VGEM 2.1</span>
+            <h1>Atlas de Peligros y Riesgos del Estado de Morelos</h1>
+            <span class="trial-version-badge" aria-label="Versión: VAPREM 2.2">Versión: VAPREM 2.2</span>
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@
       </div>
 
       <div class="topbar-compact-menu" id="topbar-compact-menu" role="menu" aria-label="Acciones del visor" hidden>
-        <div class="menu-institution"><img src="assets/Convivencia_page-0003.png" alt="Gobierno de Morelos — Protección Civil" /><strong>Atlas del Estado de Morelos</strong><span>VGEM 2.1</span></div>
+        <div class="menu-institution"><img src="assets/Convivencia_page-0003.png" alt="Gobierno de Morelos — Protección Civil" /><strong>Atlas de Peligros y Riesgos del Estado de Morelos</strong><span>VAPREM 2.2</span></div>
         <p class="topbar-menu-group-label">Navegación y consulta</p>
         <button class="menu-action" id="toggle-sidebar" type="button" role="menuitem">Panel lateral</button>
         <button
@@ -170,7 +170,7 @@
           <div class="panel-content">
             <div class="credits-card">
               <p class="info-copy">
-                Plataforma orientada a la consulta operativa del Atlas del Estado de Morelos.
+                Plataforma orientada a la consulta operativa del Atlas de Peligros y Riesgos del Estado de Morelos.
               </p>
               <ul class="credits-list">
                 <li>Coordinación Estatal de Protección Civil Morelos</li>
@@ -503,7 +503,7 @@
         <div class="modal-header">
           <div>
             <p class="section-kicker">Aviso institucional</p>
-            <h2 id="trial-notice-title">Bienvenido al Visualizador Geoespacial del Estado de Morelos</h2>
+            <h2 id="trial-notice-title">Bienvenidos al Atlas de Peligros y Riesgos del Estado de Morelos.</h2>
           </div>
         </div>
 
@@ -529,12 +529,12 @@
       </div>
 
       <p class="modal-copy">
-        El acceso ya está preparado para consumir el backend institucional. La consulta pública sigue abierta sin inicio de sesión.
+        La consulta pública está abierta sin inicio de sesión. Para acceder a las funciones de tu cuenta, introduce tu correo y contraseña.
       </p>
 
       <label class="form-field">
         <span>Correo</span>
-        <input id="login-email" type="email" placeholder="usuario@egem.morelos" required />
+        <input id="login-email" type="email" placeholder="usuario@aprem.morelos" required />
       </label>
 
       <label class="form-field">
@@ -561,41 +561,23 @@
     </form>
   </dialog>
 
-  <dialog class="modal" id="help-modal">
+  <dialog class="modal" id="help-modal" aria-labelledby="help-title">
     <div class="modal-card modal-card--wide">
       <div class="modal-header">
         <div>
           <p class="section-kicker">Consulta territorial</p>
-          <h2>Qué ya resuelve este visor</h2>
+          <h2 id="help-title">Guía rápida</h2>
         </div>
         <button class="icon-button" id="close-help" type="button" aria-label="Cerrar">x</button>
       </div>
 
       <div class="help-grid">
-        <article>
-          <strong>Consulta más simple</strong>
-          <p>
-            El mapa es protagonista y el panel lateral se reduce a mapa base, capas y detalle.
-          </p>
-        </article>
-        <article>
-          <strong>Capas operativas</strong>
-          <p>
-            Ya puedes cargar, revisar y visualizar distintos formatos para validar flujo operativo.
-          </p>
-        </article>
-        <article>
-          <strong>Roles institucionales</strong>
-          <p>
-            Visitante consulta, Director propone capas y administrador aprueba o rechaza.
-          </p>
-        </article>
-        <article>
-          <strong>Siguiente etapa</strong>
-          <p>
-            El siguiente paso es conectar este frontend a la infraestructura definitiva de producción y cerrar el menú temático de capas.
-          </p>
-        </article>
+        <article><strong>1. Abrir las capas</strong><p>Abre Menú y selecciona Panel lateral. También puedes usar Mostrar u ocultar panel. En celular, toca Mostrar para abrirlo y Minimizar para recuperar espacio en el mapa.</p></article>
+        <article><strong>2. Localizar una capa</strong><p>En Capas, escribe su nombre en Buscar capa y abre el grupo correspondiente. La consulta de las capas públicas no requiere iniciar sesión.</p></article>
+        <article><strong>3. Activar y desactivar</strong><p>Marca la casilla junto al nombre de la capa para verla en el mapa; desmárcala para ocultarla. Ajusta Visibilidad si necesitas ver el fondo a través de ella.</p></article>
+        <article><strong>4. Moverse por el mapa</strong><p>Arrastra el mapa para desplazarte. Usa Acercar mapa y Alejar mapa, o la rueda del ratón. En celular, desliza un dedo para moverte y separa o junta dos dedos para cambiar el acercamiento. Volver a Morelos recupera la vista del estado.</p></article>
+        <article><strong>5. Interpretar y consultar</strong><p>Selecciona el nombre de una capa activa para ver su leyenda: relaciona cada color o símbolo con su categoría o intervalo. Cuando la capa lo permita, toca un elemento del mapa para consultar sus datos. Algunas imágenes solo muestran información general.</p></article>
+        <article><strong>6. Cambiar el fondo y guardar</strong><p>Abre Fondos cartográficos y elige una opción. Usa Guardar imagen del mapa para guardar la vista con el título, la leyenda visible y las atribuciones. Cierra esta guía con el botón Cerrar (x) o la tecla Escape.</p></article>
       </div>
     </div>
   </dialog>
@@ -665,7 +647,7 @@
 
             <label class="form-field">
               <span>Correo</span>
-              <input id="new-user-email" type="email" placeholder="usuario@egem.morelos" required />
+              <input id="new-user-email" type="email" placeholder="usuario@aprem.morelos" required />
             </label>
 
             <label class="form-field">
@@ -857,8 +839,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/geotiff"></script>
   <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
+  <script src="js/app/config/deployment-config.js"></script>
   <script>
-    window.__EGEM_CONFIG__ = {
+    window.__APREM_CONFIG__ = {
       apiBaseUrl:
         window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
           ? "http://localhost:4000/api/v1"
@@ -866,9 +849,11 @@
       requestTimeoutMs: 12000,
       publicLayerCacheTtlMs: 120000,
       retryAttempts: 2,
-      retryDelayMs: 450
+      retryDelayMs: 450,
+      ...window.__EGEM_CONFIG__,
+      ...window.__APREM_CONFIG__
     };
   </script>
-  <script type="module" src="js/map.js?v=upload-reliability"></script>
+  <script type="module" src="js/map.js?v=aprem22"></script>
 </body>
 </html>

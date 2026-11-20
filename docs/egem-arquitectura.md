@@ -1,4 +1,4 @@
-# EGEM - Arquitectura recomendada
+# APREM - Arquitectura recomendada
 
 ## Objetivo
 

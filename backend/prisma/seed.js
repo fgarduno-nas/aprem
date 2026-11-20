@@ -6,9 +6,9 @@ dotenv.config();
 
 const prisma = new PrismaClient();
 
-const adminEmail = process.env.ADMIN_EMAIL || process.env.DEFAULT_ADMIN_EMAIL || "admin@egem.local";
+const adminEmail = process.env.ADMIN_EMAIL || process.env.DEFAULT_ADMIN_EMAIL || "admin@aprem.morelos";
 const adminPassword = process.env.ADMIN_PASSWORD || process.env.DEFAULT_ADMIN_PASSWORD || "password";
-const adminName = process.env.ADMIN_NAME || process.env.DEFAULT_ADMIN_NAME || "Administrador EGEM";
+const adminName = process.env.ADMIN_NAME || process.env.DEFAULT_ADMIN_NAME || "Administrador APREM";
 
 async function main() {
   const roles = [

@@ -1,7 +1,7 @@
 {
   "name": "egem-backend",
   "version": "1.0.0",
-  "description": "Backend institucional para EGEM - Estudio Geoespacial del Estado de Morelos",
+  "description": "Backend institucional para APREM - Atlas de Peligros y Riesgos del Estado de Morelos",
   "private": true,
   "type": "module",
   "scripts": {

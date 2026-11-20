@@ -374,7 +374,7 @@ test("la interfaz publica no renderiza textos tecnicos ni marca anterior", async
     .replace(/<[^>]+>/gu, " ")
     .replace(/\s+/g, " ");
 
-  assert.match(visibleText, /Atlas del Estado de Morelos/);
+  assert.match(visibleText, /Atlas de Peligros y Riesgos del Estado de Morelos/);
   assert.doesNotMatch(visibleText, /EGEM|Estado de operacion|Estado del sistema|Publicado|KMZ|Visualizable|Referencia/u);
   assert.doesNotMatch(visibleText, /Visualizador cartografico|Visualizador cartográfico|MapLibre GL JS/u);
   assert.match(visibleText, /Coordinación Estatal de Protección Civil Morelos/);
@@ -395,7 +395,7 @@ test("el aviso institucional de bienvenida se muestra en cada carga sin persiste
   assert.match(html, /aria-modal="true"/);
   assert.match(html, /aria-labelledby="trial-notice-title"/);
   assert.match(html, /aria-describedby="trial-notice-message"/);
-  assert.match(html, /id="trial-notice-title">Bienvenido al Visualizador Geoespacial del Estado de Morelos<\/h2>/);
+  assert.match(html, /id="trial-notice-title">Bienvenidos al Atlas de Peligros y Riesgos del Estado de Morelos.<\/h2>/);
   assert.match(html, /Consulta información geoespacial del estado de Morelos y explora las capas disponibles en el mapa\./);
   assert.doesNotMatch(html, /Visualizador en versión de prueba/u);
   assert.doesNotMatch(html, /Credencial de prueba actual|etapa de prueba del visor/u);
@@ -625,12 +625,12 @@ test("el encabezado usa un único menú de acciones sin botones distribuidos", a
   assert.match(mapSource, /document\.getElementById\("open-login"\)\?\.classList\.toggle\("hidden", state\.session\.isAuthenticated\)/);
 });
 
-test("el encabezado contiene una unica insignia VGEM 2.1 no interactiva", () => {
-  const badgeMarkup = htmlSource.match(/<span class="trial-version-badge"[^>]*>Versión: VGEM 2\.1<\/span>/u)?.[0] || "";
-  const visibleOccurrences = htmlSource.match(/>Versión: VGEM 2\.1<\/span>/g) || [];
+test("el encabezado contiene una unica insignia VAPREM 2.2 no interactiva", () => {
+  const badgeMarkup = htmlSource.match(/<span class="trial-version-badge"[^>]*>Versión: VAPREM 2\.2<\/span>/u)?.[0] || "";
+  const visibleOccurrences = htmlSource.match(/>Versión: VAPREM 2\.2<\/span>/g) || [];
 
   assert.equal(visibleOccurrences.length, 1);
-  assert.match(badgeMarkup, /aria-label="Versión: VGEM 2\.1"/);
+  assert.match(badgeMarkup, /aria-label="Versión: VAPREM 2\.2"/);
   assert.doesNotMatch(badgeMarkup, /button|href|role="button"|tabindex/u);
   assert.match(cssSource, /\.trial-version-badge\s*\{/);
   assert.match(cssSource, /\.app-shell--topbar-collapsed \.brand-title-row\s*\{/);
@@ -2830,12 +2830,12 @@ test("la opacidad tematica conserva minimo 10 y maximo 100", () => {
   assert.equal(clampLayerOpacity("invalido"), 1);
 });
 
-test("los correos institucionales propios usan dominio egem", async () => {
+test("los correos institucionales propios usan dominio aprem", async () => {
   const htmlSource = await fs.readFile(path.resolve("index.html"), "utf8");
   assert.doesNotMatch(mapSource, /@atlas\.morelos/);
   assert.doesNotMatch(htmlSource, /@atlas\.morelos/);
-  assert.match(mapSource, /admin@egem\.morelos/);
-  assert.match(htmlSource, /usuario@egem\.morelos/);
+  assert.match(mapSource, /admin@aprem\.morelos/);
+  assert.match(htmlSource, /usuario@aprem\.morelos/);
 });
 
 test("no quedan separadores mojibakeados en textos publicos", async () => {

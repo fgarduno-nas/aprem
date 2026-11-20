@@ -14,7 +14,7 @@ export const apiRouter = Router();
 apiRouter.get("/", (_req, res) => {
   res.json({
     success: true,
-    message: "API EGEM disponible",
+    message: "API APREM disponible",
     docs: "/api/v1/docs/openapi.yaml",
   });
 });

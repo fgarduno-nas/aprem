@@ -1,4 +1,4 @@
-const globalConfig = window.__EGEM_CONFIG__ ?? {};
+const globalConfig = window.__APREM_CONFIG__ ?? window.__EGEM_CONFIG__ ?? {};
 
 const localApiBaseUrl = "http://localhost:4000/api/v1";
 const productionApiBaseUrl = "https://api-egem.geodinamica.mx/api/v1";

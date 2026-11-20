@@ -1,6 +1,6 @@
-# EGEM Backend
+# APREM Backend
 
-Backend institucional para `EGEM - Estudio Geoespacial del Estado de Morelos`.
+Backend institucional para `APREM - Atlas de Peligros y Riesgos del Estado de Morelos`.
 
 ## Evaluación técnica
 
@@ -72,7 +72,7 @@ Ejemplo:
 NODE_ENV=development
 PORT=4000
 API_PREFIX=/api/v1
-APP_NAME=EGEM Backend
+APP_NAME=APREM Backend
 DATABASE_URL=postgresql://postgres:postgres@localhost:55432/egem_backend?schema=public
 JWT_SECRET=change_this_super_secret_key
 JWT_EXPIRES_IN=8h
@@ -83,12 +83,12 @@ RATE_LIMIT_MAX=150
 MAX_UPLOAD_SIZE_MB=50
 UPLOAD_BASE_DIR=uploads
 PUBLIC_BASE_URL=http://localhost:4000
-ADMIN_EMAIL=admin@egem.local
+ADMIN_EMAIL=admin@aprem.morelos
 ADMIN_PASSWORD=password
-ADMIN_NAME=Administrador EGEM
-DEFAULT_ADMIN_EMAIL=admin@egem.local
+ADMIN_NAME=Administrador APREM
+DEFAULT_ADMIN_EMAIL=admin@aprem.morelos
 DEFAULT_ADMIN_PASSWORD=password
-DEFAULT_ADMIN_NAME=Administrador EGEM
+DEFAULT_ADMIN_NAME=Administrador APREM
 ```
 
 ## Instalación
@@ -168,7 +168,7 @@ Obtén un token con el admin local:
 
 ```powershell
 $body = @{
-  email = "admin@egem.local"
+  email = "admin@aprem.morelos"
   password = "password"
 } | ConvertTo-Json
 
@@ -299,7 +299,7 @@ Ejemplo request:
 
 ```json
 {
-  "email": "admin@egem.local",
+  "email": "admin@aprem.morelos",
   "password": "password"
 }
 ```
@@ -315,8 +315,8 @@ Ejemplo response:
     "accessToken": "jwt-token",
     "user": {
       "id": "clx...",
-      "email": "admin@egem.local",
-      "name": "Administrador EGEM",
+      "email": "admin@aprem.morelos",
+      "name": "Administrador APREM",
       "municipality": "Estado de Morelos",
       "role": "ADMIN"
     }

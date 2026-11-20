@@ -2,7 +2,7 @@ import { drawExportLegend } from "./export-legend.js";
 const HANDLERS = ["scrollZoom", "boxZoom", "dragRotate", "dragPan", "keyboard", "doubleClickZoom", "touchZoomRotate", "touchPitch"];
 import { createExportScene } from "./map-export-renderer.js";
 export const BRAND_WATERMARK_OPACITY = .75;
-export const EGEM_HEADING = Object.freeze({ text: "EGEM", color: "#501C32", fontSize: 18, halo: "rgba(255,255,255,0.85)", haloWidth: 2 });
+export const APREM_HEADING = Object.freeze({ text: "APREM", color: "#501C32", fontSize: 18, halo: "rgba(255,255,255,0.85)", haloWidth: 2 });
 export const EXPORT_ANNOTATIONS = Object.freeze({
   margin: 10, gap: 12, padding: 6, logoWidth: 210, logoFraction: .24,
   creditFont: 8.5, minCreditFont: 7.5, scaleFont: 11,
@@ -60,14 +60,14 @@ export function drawExportHeading(ctx, width, height) {
   const size = Math.max(.5, Math.min(width / 1023.5, height / 788));
   const margin = EXPORT_NORTH.margin;
   ctx.save(); ctx.scale(size, size); ctx.globalAlpha = 1;
-  ctx.font = `bold ${EGEM_HEADING.fontSize}px Arial, sans-serif`;
+  ctx.font = `bold ${APREM_HEADING.fontSize}px Arial, sans-serif`;
   ctx.textAlign = "left"; ctx.textBaseline = "top"; ctx.lineJoin = "round";
-  ctx.strokeStyle = EGEM_HEADING.halo; ctx.lineWidth = EGEM_HEADING.haloWidth;
-  ctx.strokeText(EGEM_HEADING.text, margin, margin);
-  ctx.fillStyle = EGEM_HEADING.color; ctx.fillText(EGEM_HEADING.text, margin, margin);
-  const textWidth = ctx.measureText(EGEM_HEADING.text).width;
+  ctx.strokeStyle = APREM_HEADING.halo; ctx.lineWidth = APREM_HEADING.haloWidth;
+  ctx.strokeText(APREM_HEADING.text, margin, margin);
+  ctx.fillStyle = APREM_HEADING.color; ctx.fillText(APREM_HEADING.text, margin, margin);
+  const textWidth = ctx.measureText(APREM_HEADING.text).width;
   ctx.restore();
-  return { x: margin * size, y: margin * size, width: textWidth * size, height: EGEM_HEADING.fontSize * size };
+  return { x: margin * size, y: margin * size, width: textWidth * size, height: APREM_HEADING.fontSize * size };
 }
 
 export function waitForExportResource(promise, signal) {
@@ -131,7 +131,7 @@ export function exportDate(date = new Date()) {
   }).formatToParts(date).map(({ type, value }) => [type, value]));
   return {
     label: `${parts.day}/${parts.month}/${parts.year} · ${parts.hour}:${parts.minute}`,
-    filename: `EGEM_Morelos_${parts.year}-${parts.month}-${parts.day}_${parts.hour}${parts.minute}.png`,
+    filename: `aprem_morelos_${parts.year}-${parts.month}-${parts.day}_${parts.hour}${parts.minute}.png`,
   };
 }
 

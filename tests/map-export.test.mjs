@@ -60,7 +60,7 @@ test("GOES fuera de cobertura detiene la exportación con alternativa explícita
 
 test("fecha y nombre usan México incluso al cambiar de día en UTC", () => {
   assert.deepEqual(exportDate(new Date("2026-09-26T01:49:00Z")), {
-    label: "25/09/2026 · 19:49", filename: "EGEM_Morelos_2026-09-25_1949.png",
+    label: "25/09/2026 · 19:49", filename: "aprem_morelos_2026-09-25_1949.png",
   });
   assert.equal(exportDate(new Date("2026-09-25T06:00:00Z")).label, "25/09/2026 · 00:00");
 });
@@ -304,7 +304,7 @@ for (const bearing of [0,45,90,135,180,270,-45,-90,359.95]) {
   });
 }
 
-import { BRAND_WATERMARK_OPACITY, EGEM_HEADING, drawExportHeading } from '../js/app/utils/map-export.js';
+import { BRAND_WATERMARK_OPACITY, APREM_HEADING, drawExportHeading } from '../js/app/utils/map-export.js';
 test('alfa 75% aislado con save/restore; escala solo halo y barra sin tarjeta', () => {
   const events=[],stack=[];const ctx={...measuredContext(),globalAlpha:1,
     save(){stack.push(this.globalAlpha);events.push(['save'])},restore(){this.globalAlpha=stack.pop();events.push(['restore'])},
@@ -325,13 +325,13 @@ test('alfa 75% aislado con save/restore; escala solo halo y barra sin tarjeta', 
   } finally {globalThis.DOMParser=previous;}
 });
 for(const [width,height] of [[1023.5,788],[292,544],[584,1088],[2047,1576]]) {
-  test(`EGEM guinda con halo sin tarjeta, superior izquierdo ${width}x${height}`,()=>{
+  test(`APREM guinda con halo sin tarjeta, superior izquierdo ${width}x${height}`,()=>{
     const events=[];const ctx={...measuredContext(),save(){},restore(){},scale(x,y){assert.equal(x,y)},
       strokeText(t,x,y){events.push(['halo',t,x,y,this.strokeStyle,this.globalAlpha])},
       fillText(t,x,y){events.push(['text',t,x,y,this.fillStyle,this.globalAlpha])}};
     const box=drawExportHeading(ctx,width,height);
-    assert.equal(EGEM_HEADING.color,'#501C32');
-    assert.deepEqual(events.map(e=>[e[0],e[1],e[4],e[5]]),[['halo','EGEM',EGEM_HEADING.halo,1],['text','EGEM','#501C32',1]]);
+    assert.equal(APREM_HEADING.color,'#501C32');
+    assert.deepEqual(events.map(e=>[e[0],e[1],e[4],e[5]]),[['halo','APREM',APREM_HEADING.halo,1],['text','APREM','#501C32',1]]);
     assert.equal(box.x,box.y);assert.ok(box.x>0&&box.y>0&&box.x+box.width<width&&box.y+box.height<height);
     assert.ok(!overlaps(box,drawExportNorth(northContext(),width,height,{bearing:90,pitch:60})));
     const footer=annotationLayout(measuredContext(),width,height,{pixels:60,label:'10 km'},'Satélite · GOES',4);

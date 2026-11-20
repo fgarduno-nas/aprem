@@ -62,7 +62,7 @@ app.get("/uploads/*", serveLayerAsset);
 app.get("/health", (_req, res) => {
   res.json({
     success: true,
-    message: "EGEM backend operativo",
+    message: "APREM backend operativo",
     timestamp: new Date().toISOString(),
   });
 });

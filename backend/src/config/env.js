@@ -13,7 +13,7 @@ const envSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   PORT: z.coerce.number().default(4000),
   API_PREFIX: z.string().default("/api/v1"),
-  APP_NAME: z.string().default("EGEM Backend"),
+  APP_NAME: z.string().default("APREM Backend"),
   DATABASE_URL: z.string().min(1),
   JWT_SECRET: z.string().min(16),
   JWT_EXPIRES_IN: z.string().default("8h"),

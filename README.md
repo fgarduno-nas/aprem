@@ -1,6 +1,6 @@
-# EGEM - Visor Morelos
+# APREM - Visor Morelos
 
-Plataforma institucional para el `Estudio Geoespacial del Estado de Morelos` orientada a consulta, carga, revision y publicacion de capas socio-naturales.
+Plataforma institucional para el `Atlas de Peligros y Riesgos del Estado de Morelos` orientada a consulta, carga, revision y publicacion de capas socio-naturales.
 
 ## Estructura
 
@@ -39,11 +39,11 @@ Abre:
 http://127.0.0.1:4173/index.html
 ```
 
-La URL de API se centraliza en `js/app/config/runtime-config.js`. En produccion no debe quedar fija a `localhost`; define `window.__EGEM_CONFIG__` antes de cargar `js/map.js` si necesitas apuntar a otro backend:
+La URL de API se centraliza en `js/app/config/runtime-config.js`. En produccion no debe quedar fija a `localhost`; define `window.__APREM_CONFIG__` antes de cargar `js/map.js` si necesitas apuntar a otro backend:
 
 ```html
 <script>
-  window.__EGEM_CONFIG__ = {
+  window.__APREM_CONFIG__ = {
     apiBaseUrl: "https://api.tu-dominio.gob.mx/api/v1"
   };
 </script>
@@ -118,3 +118,7 @@ npm run dev
 - Sirve el frontend estatico con Nginx, Apache, GitHub Pages o almacenamiento estatico.
 - Publica el backend detras de HTTPS y proxy inverso.
 - No subas `.env`, `node_modules`, uploads reales ni respaldos al repositorio.
+
+## Transición a APREM
+
+[Activación y reversión](docs/transicion-aprem.md). No ejecutar seed para migrar cuentas existentes.

@@ -42,6 +42,12 @@ jobs:
           cp -r data _site/data
           touch _site/.nojekyll
 
+      - name: Configure API endpoint
+        env:
+          APREM_API_BASE_URL: ${{ vars.APREM_API_BASE_URL }}
+        run: |
+          node -e "const fs = require('fs'); const url = process.env.APREM_API_BASE_URL; const config = url ? { apiBaseUrl: url } : {}; fs.writeFileSync('_site/js/app/config/deployment-config.js', 'window.__APREM_CONFIG__ = ' + JSON.stringify(config) + ';\n');"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
