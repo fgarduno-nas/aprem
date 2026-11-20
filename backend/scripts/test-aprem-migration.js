@@ -15,6 +15,7 @@ try {
   url.pathname = `/${databaseName}`;
   process.env.DATABASE_URL = url.href;
   process.env.NODE_ENV = 'test';
+  process.env.MAX_UPLOAD_SIZE_MB = '50';
   process.env.JWT_SECRET = 'isolated-aprem-validation-secret';
   process.env.DEFAULT_ADMIN_EMAIL = 'validation@example.invalid';
   process.env.DEFAULT_ADMIN_PASSWORD = 'ValidationOnly123!';
@@ -29,7 +30,7 @@ try {
     const hash = await hashPassword('IsolatedPassword123!');
     const user = await db.user.create({data:{name:'Synthetic',email:'synthetic@egem.morelos',passwordHash:hash,roleId:role.id}});
     await db.auditLog.create({data:{actorId:user.id,entityType:'User',entityId:user.id,action:'USER_CREATED',description:'Synthetic history'}});
-    const layer = await db.layer.create({data:{title:'Synthetic',slug:'synthetic',createdById:user.id,status:'published'}});
+    const layer = await db.layer.create({data:{title:'Synthetic',slug:'synthetic',createdById:user.id,division:'vulnerability',status:'published'}});
     await db.approvalHistory.create({data:{layerId:layer.id,actorId:user.id,fromStatus:'approved',toStatus:'published'}});
     const before = await db.user.findUnique({where:{id:user.id}});
     assert.equal((await migrateEmails(db)).candidates,1);
