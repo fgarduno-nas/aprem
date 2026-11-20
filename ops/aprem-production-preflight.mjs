@@ -15,6 +15,10 @@ const quiet = (command, args, options = {}) => {
   if (result.error || result.status !== 0) throw new Error('COMMAND_FAILED');
   return result.stdout?.toString() || '';
 };
+const localPostgres = (command, args, options = {}) => quiet('runuser', ['-u', 'postgres', '--', command, ...args], {
+  env: { PATH: process.env.PATH, LANG: 'C', PGHOST: '/var/run/postgresql', PGPORT: '5432', PGUSER: 'postgres', PGDATABASE: 'postgres' },
+  ...options,
+});
 const sha256 = (file) => new Promise((resolve, reject) => {
   const hash = crypto.createHash('sha256');
   fs.createReadStream(file).on('error', reject).on('data', chunk => hash.update(chunk)).on('end', () => resolve(hash.digest('hex')));
@@ -96,15 +100,15 @@ async function makeBackup(url, identity) {
   if (!/^aprem_restorecheck_[a-f0-9]{24}$/.test(temporary) || temporary === childEnv.PGDATABASE) throw new Error('UNSAFE_RESTORE_TARGET');
   let created = false;
   try {
-    quiet('runuser', ['-u', 'postgres', '--', 'createdb', '--template=template0', temporary]);
+    localPostgres('createdb', ['--template=template0', temporary]);
     created = true;
     const input = fs.openSync(dump, 'r');
-    try { quiet('runuser', ['-u', 'postgres', '--', 'pg_restore', '--dbname', temporary, '--no-owner', '--no-privileges', '--exit-on-error'], { stdio: [input, 'pipe', 'pipe'] }); }
+    try { localPostgres('pg_restore', ['--dbname', temporary, '--no-owner', '--no-privileges', '--exit-on-error'], { stdio: [input, 'pipe', 'pipe'] }); }
     finally { fs.closeSync(input); }
     // Confirm the restored account table can be read; do not print its contents.
-    quiet('runuser', ['-u', 'postgres', '--', 'psql', '--dbname', temporary, '--no-psqlrc', '--tuples-only', '--command', 'SELECT count(*) FROM "User";']);
+    localPostgres('psql', ['--dbname', temporary, '--no-psqlrc', '--tuples-only', '--command', 'SELECT count(*) FROM "User";']);
   } finally {
-    if (created) quiet('runuser', ['-u', 'postgres', '--', 'dropdb', temporary]);
+    if (created) localPostgres('dropdb', [temporary]);
   }
   fs.writeFileSync(path.join(directory, 'verified.json'), JSON.stringify({
     identity, createdAt: new Date().toISOString(), sha256: await sha256(dump), restoreVerified: true,
@@ -121,7 +125,7 @@ try {
   if (mode === 'backup' && !verified) {
     const size = await client.$queryRawUnsafe('SELECT pg_database_size(current_database()) AS bytes');
     const bytes = BigInt(size[0].bytes);
-    const dataDirectory = quiet('runuser', ['-u', 'postgres', '--', 'psql', '--dbname', 'postgres', '--no-psqlrc', '--tuples-only', '--no-align', '--command', 'SHOW data_directory;']).trim();
+    const dataDirectory = localPostgres('psql', ['--dbname', 'postgres', '--no-psqlrc', '--tuples-only', '--no-align', '--command', 'SHOW data_directory;']).trim();
     const free = directory => { const stat = fs.statfsSync(directory, { bigint: true }); return stat.bavail * stat.bsize; };
     const backupParent = fs.existsSync(backupRoot) ? backupRoot : '/var/backups';
     const sameDisk = fs.statSync(backupParent).dev === fs.statSync(dataDirectory).dev;
